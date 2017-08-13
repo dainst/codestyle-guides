@@ -106,6 +106,26 @@ Diese Regel wurde eingeführt, weil der Typescript-Compiler Zugriffe auf Methode
 *public* darf nur weggelassen werden bei von Angular Interfaces abgeleiteten Klassen für die Interfacemethoden, z.B. ngOnInit. Hier ist beides erlaubt: public ngOnInit {, aber auch ngOnInit {
 *private* für alles andere.
 
+## HTML
+
+### Einrückung
+Kindelemente sollten grundsätzlich mit 4 Leerzeichen eingerückt werden
+Ausnahme: Inline-Elemente wie b, i oder span
+Elemente mit vielen Attributen, deren Start-Tags eine Zeilenlänge überschreiten sollten umgebrochen werden
+Dabei sollte dann eine Zeile pro Attribut geschrieben werden, eingerückt mit 8 Leerzeichen, z.B.:
+
+```html
+<li *ngFor="let document of documents; let index=index" 
+        (click)="select(document)" 
+        class="list-group-item" 
+        [class.synced]="document.synced" 
+        [class.unsynced]="!document.synced" 
+        [class.selected]="getSelected() && getSelected().resource.id === document.id" 
+        onclick="window.scrollTo(0, 0)">
+    <div class="row">
+    </div>
+</li>
+```
 
 
 

@@ -16,7 +16,7 @@ Einrückung mit 4 Leerzeichen, sofern nicht anders (z.B. für eine Sprache oder 
 Jeweils ein Leerzeichen vor und nach allen Arten von Operatoren (TODO klären, auch vor Doppelpunkten? nä oder?)
 
 ```javascript
-  this.foo = bar + 23;
+this.foo = bar + 23;
 ```
 
 Ein Leerzeichen nach if

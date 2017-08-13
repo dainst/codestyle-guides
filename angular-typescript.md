@@ -69,10 +69,10 @@ const name = 'dai';
 
 Doppelte "" dann verwenden, wenn man etwas innerhalb des Strings replacen möchte.
 
-Zu klären: Imports, organize Import in IntelliJ setzt immer doppelte Anführungzeichen
+Das Verhalten von IntelliJ (https://stackoverflow.com/questions/39779272/webstorm-phpstorm-double-quotes-in-typescript-auto-import) sollte umgestellt werden, das bei *organize imports* auch einfache Anführungszeichen generiert werden.
 
 ```typescript
-import {MapState} from "./map/map-state";
+import {MapState} from './map/map-state';
 ```
 
 ## Promises

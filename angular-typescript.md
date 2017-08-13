@@ -1,5 +1,9 @@
 # angular-styleguide
 
+* für Angular / Typescript Projekte
+* idai-field-client
+* idai-components-2
+
 ## Zeilenlänge
 Die Zeilenlänge sollte 80 Zeichen nicht überschreiten.
 

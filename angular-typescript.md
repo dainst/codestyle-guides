@@ -34,7 +34,13 @@ if (foo == bar) {
 Ein Leerzeichen nach Komma zur Trennung von Parametern
 
 ```
-private doStuff(foo, bar, baz);
+private doStuff(foo, bar, baz) { }
+```
+
+Mit Typisierung
+
+```
+private doStuff(foo: any, bar: any, baz: any): any { }
 ```
 
 ## Leerzeilen
@@ -100,6 +106,17 @@ doc.resource['filename']
 ```
 
 D.h. wir verwenden den keybasierten Access für Felder die nicht definiert sind, und die Punktnotation für Felder die definiert sind.
+
+## Schleifen
+
+* am besten *for .. of*
+* ansonsten *for mit i* oder *for .. in*
+* *forEach* vermeiden, stattdessen *for .. of*
+
+## let, const, var
+
+Wann immer es geht, **const** verwenden. Wenn das nicht geht, **let** verwenden.
+**var** vermeiden.
 
 ## access modifiers in components
 

@@ -37,11 +37,13 @@ Ein Leerzeichen nach Komma zur Trennung von Parametern
 
 Bei Funktionen
 
+```javascript
 public a() {
 
     doThis();
     doThat();
 }
+```
 
 ## Klammerung
 

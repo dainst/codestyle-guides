@@ -87,14 +87,18 @@ import {MapState} from './map/map-state';
 
 ## Promises
 
+*.then* oder *.catch* immer zu Beginn neuer Zeilen schreiben
+
 ```typescript
 return Promise.resolve()
-      .then(() => this.doThis())
-      .catch() => this.doThat())
-      .this(() => {
-      })
-      .catch(err => Promise.reject(err));
+  .then(() => this.doThis())
+  .catch() => this.doThat())
+  .this(() => {
+  })
+  .catch(err => Promise.reject(err));
 ```
+
+*return new Promise<any>((resolve, reject) => {} );* vermeiden, stattdessen wo möglichen mit Promise Chains arbeiten.
 
 ## Objekte - Felder vs. Hashes.
 

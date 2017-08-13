@@ -9,16 +9,25 @@ Einrückung mit 4 Leerzeichen, sofern nicht anders (z.B. für eine Sprache oder 
 ## Leerzeichen
 Jeweils ein Leerzeichen vor und nach allen Arten von Operatoren (TODO klären, auch vor Doppelpunkten? nä oder?)
 
-  this.foo = bar + 23;
+```javascript
+  this.foo = bar + 23;
+```
 
 Ein Leerzeichen nach if
 
-  if (foo == bar)
-  
+```javascript
+if (foo == bar)
+```
+
 Ein Leerzeichen vor öffnenden geschweiften Klammern
 
-  if (foo == bar) {
+```javascript
+  if (foo == bar) {
+```
 
 Ein Leerzeichen nach Komma zur Trennung von Parametern
 
-  doStuff(foo, bar, baz);
+```
+  doStuff(foo, bar, baz);
+```
+

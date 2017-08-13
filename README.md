@@ -71,19 +71,19 @@ Doppelte "" dann verwenden, wenn man etwas innerhalb des Strings replacen möcht
 
 Zu klären: Imports, organize Import in IntelliJ setzt immer doppelte Anführungzeichen
 
-```javascript
+```typescript
 import {MapState} from "./map/map-state";
 ```
 
 ## Promises
 
-```javascript
+```typescript
 return Promise.resolve()
       .then(() => this.doThis())
       .catch() => this.doThat())
       .this(() => {
       })
-      .catch() => Promise.reject(undefined));
+      .catch(err => Promise.reject(err));
 ```
 
 ## Objekte - Felder vs. Hashes.

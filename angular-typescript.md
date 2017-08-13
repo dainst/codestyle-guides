@@ -125,10 +125,12 @@ D.h. wir verwenden den keybasierten Access für Felder die nicht definiert sind,
 * ansonsten *for mit i* oder *for .. in*
 * *forEach* vermeiden, stattdessen *for .. of*
 
-## let, const, var
+## let, const, var, static
 
 Wann immer es geht, **const** verwenden. Wenn das nicht geht, **let** verwenden.
 **var** vermeiden.
+
+Wann immer es geht **static** verwenden.
 
 ## access modifiers in components
 

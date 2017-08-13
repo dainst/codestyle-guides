@@ -24,13 +24,13 @@ if (foo == bar)
 Ein Leerzeichen vor öffnenden geschweiften Klammern
 
 ```javascript
-  if (foo == bar) {
+if (foo == bar) {
 ```
 
 Ein Leerzeichen nach Komma zur Trennung von Parametern
 
 ```
-  doStuff(foo, bar, baz);
+doStuff(foo, bar, baz);
 ```
 
 ## Leerzeilen
@@ -105,7 +105,18 @@ D.h. wir verwenden den keybasierten Access für Felder die nicht definiert sind,
 
 Diese Regel wurde eingeführt, weil der Typescript-Compiler Zugriffe auf Methoden aus Templates nicht erkennt und die IDE diese Methoden fälschlicherweise als unused markiert.
 
-*public* darf nur weggelassen werden bei von Angular Interfaces abgeleiteten Klassen für die Interfacemethoden, z.B. ngOnInit. Hier ist beides erlaubt: public ngOnInit {, aber auch ngOnInit {
+*public* darf nur weggelassen werden bei von Angular Interfaces abgeleiteten Klassen für die Interfacemethoden, z.B. ngOnInit. Hier ist beides erlaubt: 
+
+```typescript
+public ngOnInit {, 
+``` 
+
+aber auch 
+
+```typescript 
+ngOnInit {
+```
+
 *private* für alles andere.
 
 ## HTML

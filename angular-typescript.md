@@ -15,31 +15,31 @@ Einrückung mit 4 Leerzeichen, sofern nicht anders (z.B. für eine Sprache oder 
 
 Jeweils ein Leerzeichen vor und nach allen Arten von Operatoren (TODO klären, auch vor Doppelpunkten? nä oder?)
 
-```javascript
+```typescript
 this.foo = bar + 23;
 ```
 
 Ein Leerzeichen nach if
 
-```javascript
+```typescript
 if (foo == bar)
 ```
 
 Ein Leerzeichen vor öffnenden geschweiften Klammern
 
-```javascript
+```typescript
 if (foo == bar) {
 ```
 
 Ein Leerzeichen nach Komma zur Trennung von Parametern
 
-```
+```typescript
 private doStuff(foo, bar, baz) { }
 ```
 
 Mit Typisierung
 
-```
+```typescript
 private doStuff(foo: any, bar: any, baz: any): any { }
 ```
 
@@ -47,7 +47,7 @@ private doStuff(foo: any, bar: any, baz: any): any { }
 
 Bei Funktionen
 
-```javascript
+```typescript
 public a() {
 
     doThis();
@@ -63,7 +63,7 @@ public a() {
 
 Typangabe bei Variablendeklaration mit einem Leerzeichen getrennt
 
-```javascript
+```typescript
 private foo: Foo;
 ```
 
@@ -73,7 +73,7 @@ Optionale Semikola sollten immer angegeben werden.
 
 Wann immer möglich, einfache '' verwenden. Z.B.
 
-```javascript
+```typescript
 const name = 'dai';
 ```
 
@@ -99,10 +99,18 @@ return Promise.resolve()
 ## Objekte - Felder vs. Hashes.
 
 Dank Typescript können wir ja Klassen definieren. Wenn wir z.B. in der Klasse Document das Feld resource definiert haben,
+
+```typescript
+class Doc {
+  resource: any
+}
+```
+
 können wir bei Aufrufen dann schreiben
 
-```javascript
-doc.resource['filename']
+```typescript
+const doc: Doc = { resource: { } };
+doc.resource['filename'] = 'a.txt';
 ```
 
 D.h. wir verwenden den keybasierten Access für Felder die nicht definiert sind, und die Punktnotation für Felder die definiert sind.

@@ -56,10 +56,19 @@ Doppelte "" dann verwenden, wenn man etwas innerhalb des Strings replacen möcht
 Dank Typescript können wir ja Klassen definieren. Wenn wir z.B. in der Klasse Document das Feld resource definiert haben,
 können wir bei Aufrufen dann schreiben
 
+```javascript
 doc.resource['filename']
+```
+
 D.h. wir verwenden den keybasierten Access für Felder die nicht definiert sind, und die Punktnotation für Felder die definiert sind.
 
+## access modifiers in components
 
+public wird ausgeschrieben, auch wenn es default visibility ist
+public wird immer verwendet, wenn die Methoden von anderen Klassen aufgerufen werden. Zugriffe aus Templates gelten dabei als public access.
+Diese Regel wurde eingeführt, weil der Typescript-Compiler Zugriffe auf Methoden aus Templates nicht erkennt und die IDE diese Methoden fälschlicherweise als unused markiert.
+public darf nur weggelassen werden bei von Angular Interfaces abgeleiteten Klassen für die Interfacemethoden, z.B. ngOnInit. Hier ist beides erlaubt: public ngOnInit {, aber auch ngOnInit {
+private für alles andere.
 
 
 

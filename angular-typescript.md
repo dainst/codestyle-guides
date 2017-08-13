@@ -34,7 +34,7 @@ if (foo == bar) {
 Ein Leerzeichen nach Komma zur Trennung von Parametern
 
 ```
-doStuff(foo, bar, baz);
+private doStuff(foo, bar, baz);
 ```
 
 ## Leerzeilen

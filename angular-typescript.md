@@ -85,20 +85,15 @@ Das Verhalten von IntelliJ (https://stackoverflow.com/questions/39779272/webstor
 import {MapState} from './map/map-state';
 ```
 
+## Temporäre Variable
+
+... erst kurz vor Verwendung deklarieren. Am besten ganz vermeiden.
+
 ## Promises
 
-*.then* oder *.catch* immer zu Beginn neuer Zeilen schreiben
+*return new Promise<any>((resolve, reject) => {});* vermeiden, stattdessen wo möglichen mit Promise Chains arbeiten.
 
-```typescript
-return Promise.resolve()
-  .then(() => this.doThis())
-  .catch() => this.doThat())
-  .this(() => {
-  })
-  .catch(err => Promise.reject(err));
-```
-
-*return new Promise<any>((resolve, reject) => {} );* vermeiden, stattdessen wo möglichen mit Promise Chains arbeiten.
+TODO style für promise chains klären
 
 ## Objekte - Felder vs. Hashes.
 
@@ -131,6 +126,15 @@ Wann immer es geht, **const** verwenden. Wenn das nicht geht, **let** verwenden.
 **var** vermeiden.
 
 Wann immer es geht **static** verwenden.
+
+## organization of fields and methods in classes
+
+1. fields
+2. constructor
+3. public methods
+4. protected methods 
+5. private methods
+6. private static methods
 
 ## access modifiers in components
 

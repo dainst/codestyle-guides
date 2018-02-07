@@ -196,7 +196,7 @@ Einrückungen sollten grundsätzlich mit 4 Leerzeichen eingerückt werden. Auf M
 Auf Style-Attribute sollte vollständig verzichtet werden. Stattdessen werden Klassen oder IDs verwendet.
 
 ### Hierarchie in SCSS-Files
-Von der Möglichkeit der Hierarchiedarstellung in SCSS-Files sollte Gebrauch gemacht werden:
+Von der Möglichkeit der Hierarchiedarstellung in SCSS-Files sollte Gebrauch gemacht werden, um die tatsächliche Gliederung im DOM bzw. in der Componentstruktur annähernd widerzuspielen.
 ```
 #resources {
   position: fixed;

@@ -123,12 +123,10 @@ D.h. wir verwenden den keybasierten Access für Felder die nicht definiert sind,
 * nur wenn nötig *for .. of* verwenden
 * *for mit i* nur in begründeten Ausnahmefällen verwenden
 
-## let, const, var, static
+## let, const, var
 
 Wann immer es geht, **const** verwenden. Wenn das nicht geht, **let** verwenden.
 **var** wird grundsätzlich nicht verwendet.
-
-Wann immer es geht **static** verwenden.
 
 ## Parameter-Sideeffects
 
@@ -156,58 +154,61 @@ public manipulate(a: string[]): string[] {
 }
 ```
 
+## Access modifiers in Components
 
-## organization of fields and methods in classes
-
-1. fields
-2. constructor
-3. public methods
-4. protected methods 
-5. private methods
-6. private static methods
-
-## access modifiers in components
-
-*public* wird ausgeschrieben, auch wenn es default visibility ist
+*public* wird ausgeschrieben, auch wenn es bei Typescript der Default-Modifier ist.
 
 *public* wird immer verwendet, wenn die Methoden von anderen Klassen aufgerufen werden. Zugriffe aus Templates gelten dabei als public access.
 
 Diese Regel wurde eingeführt, weil der Typescript-Compiler Zugriffe auf Methoden aus Templates nicht erkennt und die IDE diese Methoden fälschlicherweise als unused markiert.
 
-*public* darf nur weggelassen werden bei von Angular Interfaces abgeleiteten Klassen für die Interfacemethoden, z.B. ngOnInit. Hier ist beides erlaubt: 
+*public* wird nur bei von Angular-Interfaces abgeleiteten Klassen für die Interface-Methoden weggelassen, z.B. ngOnInit oder ngOnChanges.
 
-```typescript
-public ngOnInit {, 
-``` 
+*private* bzw. *protected* für alles andere.
 
-aber auch 
 
-```typescript 
-ngOnInit {
-```
+## Static methods
 
-*private* für alles andere.
+Bei private methods sollte **static** verwendet werden, wann immer es möglich ist. Dadurch ist bei diesen Methoden auf den ersten Blick ersichtlich, dass keine Felder des Objekts manipuliert werden. Feldzugriffe sollten generell möglichst nah an den Einstiegspunkten in die Klasse (public methods) stattfinden.
 
-## HTML
+Public static methods werden selten verwendet, da sie aus Templates nicht aufgerufen werden können. Bei Utility-Klassen sollten statt public static methods direkt Funktionen exportiert werden.
+
+
+## Reihenfolge von Feldern und Methoden in Klassen
+
+1. Fields
+2. Constructor
+3. Public methods
+3. Public static methods
+4. Protected methods 
+5. Private methods
+6. Private static methods
+
+Diese Reihenfolge soll u. a. erreichen, dass sich Methoden, die Felder manipulieren, möglichst weit oben in der Datei befinden.
+
+
+## HTML/CSS
 
 ### Einrückung
-Kindelemente sollten grundsätzlich mit 4 Leerzeichen eingerückt werden
-Ausnahme: Inline-Elemente wie b, i oder span
-Elemente mit vielen Attributen, deren Start-Tags eine Zeilenlänge überschreiten sollten umgebrochen werden
-Dabei sollte dann eine Zeile pro Attribut geschrieben werden, eingerückt mit 8 Leerzeichen, z.B.:
+Einrückungen sollten grundsätzlich mit 4 Leerzeichen eingerückt werden. Auf Modularisierung (Ausgliedern in neue Angular-Components) sollte geachtet werden, sodass Templates nicht zu lang werden.
 
-```html
-<li *ngFor="let document of documents; let index=index" 
-        (click)="select(document)" 
-        class="list-group-item" 
-        [class.synced]="document.synced" 
-        [class.unsynced]="!document.synced" 
-        [class.selected]="getSelected() && getSelected().resource.id === document.id" 
-        onclick="window.scrollTo(0, 0)">
-    <div class="row">
-    </div>
-</li>
+### CSS-Einbindung
+Auf Style-Attribute sollte vollständig verzichtet werden. Stattdessen werden Klassen oder IDs verwendet.
+
+### Hierarchie in SCSS-Files
+Von der Möglichkeit der Hierarchiedarstellung in SCSS-Files sollte Gebrauch gemacht werden:
 ```
+#resources {
+  position: fixed;
+  width: 100%;
+  z-index: 1001;
 
+  #search-bar-container {
+    padding-right: 8px;
 
-
+    #search-bar #filter-button {
+      right: 5px;
+    }
+  }
+}
+```

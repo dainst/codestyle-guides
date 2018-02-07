@@ -133,20 +133,20 @@ Wann immer es geht **static** verwenden.
 ## Parameter-Sideeffects
 
 Grundsätzlich gilt:
-* Eine Methode mit Rückgabewert sollte ohne Parameter-Sideeffects auskommen. Negativbeispiel:
+Eine Methode mit Rückgabewert sollte ohne Parameter-Sideeffects auskommen. Negativbeispiel:
 ```
 public manipulate(a: string[]): string[] {
     a.splice(0, 1);
     return a;
 }
 ```
-* In Methoden ohne Rückgabewert, bei denen die Manipulation eines Parameters aus dem Namen ausreichend hervorgeht, können Parameter-Sideeffects unter Umständen sinnvoll sein.
+In Methoden ohne Rückgabewert, bei denen die Manipulation eines Parameters aus dem Namen ausreichend hervorgeht, können Parameter-Sideeffects unter Umständen sinnvoll sein.
 ```
 public manipulate(a: string[]) {
     a.splice(0, 1);
 }
 ```
-* Nach Möglichkeit sollte allerdings ganz auf Parameter-Sideeffects verzichtet werden.
+Nach Möglichkeit sollte allerdings ganz auf Parameter-Sideeffects verzichtet werden.
 ```
 public manipulate(a: string[]): string[] {
     return a.slice(1);

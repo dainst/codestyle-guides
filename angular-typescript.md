@@ -1,11 +1,15 @@
-# angular-styleguide
+// TODO Compiler-Settings (no implicit any usw.)
+// TODO Lamba-Notation (this-Pointer und implizites Return)
+
+
+# Angular-Styleguide
 
 * für Angular / Typescript Projekte
 * idai-field-client
 * idai-components-2
 
 ## Zeilenlänge
-Die Zeilenlänge sollte 80 Zeichen nicht überschreiten.
+Die Zeilenlänge sollte 110 Zeichen nicht überschreiten.
 
 ## Einrückung
 
@@ -13,31 +17,31 @@ Einrückung mit 4 Leerzeichen, sofern nicht anders (z.B. für eine Sprache oder 
 
 ## Leerzeichen
 
-Jeweils ein Leerzeichen vor und nach allen Arten von Operatoren (TODO klären, auch vor Doppelpunkten? nä oder?)
+Jeweils ein Leerzeichen vor und nach allen Arten von Operatoren:
 
 ```typescript
 this.foo = bar + 23;
 ```
 
-Ein Leerzeichen nach if
+Ein Leerzeichen nach if:
 
 ```typescript
 if (foo == bar)
 ```
 
-Ein Leerzeichen vor öffnenden geschweiften Klammern
+Ein Leerzeichen vor öffnenden geschweiften Klammern:
 
 ```typescript
 if (foo == bar) {
 ```
 
-Ein Leerzeichen nach Komma zur Trennung von Parametern
+Ein Leerzeichen nach Komma zur Trennung von Parametern:
 
 ```typescript
 private doStuff(foo, bar, baz) { }
 ```
 
-Mit Typisierung
+Mit Typisierung:
 
 ```typescript
 private doStuff(foo: any, bar: any, baz: any): any { }
@@ -45,7 +49,7 @@ private doStuff(foo: any, bar: any, baz: any): any { }
 
 ## Leerzeilen
 
-Bei Funktionen
+Bei Funktionen:
 
 ```typescript
 public a() {
@@ -61,7 +65,7 @@ public a() {
 
 ## Typangabe bei Variablendeklaration
 
-Typangabe bei Variablendeklaration mit einem Leerzeichen getrennt
+Typangabe bei Variablendeklaration mit einem Leerzeichen getrennt:
 
 ```typescript
 private foo: Foo;
@@ -71,7 +75,7 @@ Optionale Semikola sollten immer angegeben werden.
 
 ## Anführungszeichen
 
-Wann immer möglich, einfache '' verwenden. Z.B.
+Wann immer möglich, einfache '' verwenden. Z.B.:
 
 ```typescript
 const name = 'dai';
@@ -85,15 +89,14 @@ Das Verhalten von IntelliJ (https://stackoverflow.com/questions/39779272/webstor
 import {MapState} from './map/map-state';
 ```
 
-## Temporäre Variable
+## Temporäre Variablen
 
 ... erst kurz vor Verwendung deklarieren. Am besten ganz vermeiden.
 
+
 ## Promises
 
-*return new Promise<any>((resolve, reject) => {});* vermeiden, stattdessen wo möglichen mit Promise Chains arbeiten.
-
-TODO style für promise chains klären
+Bevorzugt async und await benutzen, um nach Möglichkeit auf Promise-Chaining (.then(() => {}).then...) verzichten zu können.
 
 ## Objekte - Felder vs. Hashes.
 
@@ -116,16 +119,40 @@ D.h. wir verwenden den keybasierten Access für Felder die nicht definiert sind,
 
 ## Schleifen
 
-* am besten *for .. of*
-* ansonsten *for mit i* oder *for .. in*
-* *forEach* vermeiden, stattdessen *for .. of*
+* bevorzugt *forEach* für Schleifen verwenden und mit Array-Funktionen (filter, map, includes, reduce etc.) kombinieren
+* nur wenn nötig *for .. of* verwenden
+* *for mit i* nur in begründeten Ausnahmefällen verwenden
 
 ## let, const, var, static
 
 Wann immer es geht, **const** verwenden. Wenn das nicht geht, **let** verwenden.
-**var** vermeiden.
+**var** wird grundsätzlich nicht verwendet.
 
 Wann immer es geht **static** verwenden.
+
+## Parameter-Sideeffects
+
+Grundsätzlich gilt:
+* Eine Methode mit Rückgabewert sollte ohne Parameter-Sideeffects auskommen. Negativbeispiel:
+```
+public manipulate(a: string[]): string[] {
+    a.splice(0, 1);
+    return a;
+}
+```
+* In Methoden ohne Rückgabewert, bei denen die Manipulation eines Parameters aus dem Namen ausreichend hervorgeht, können Parameter-Sideeffects unter Umständen sinnvoll sein.
+```
+public manipulate(a: string[]) {
+    a.splice(0, 1);
+}
+```
+* Nach Möglichkeit sollte allerdings ganz auf Parameter-Sideeffects verzichtet werden.
+```
+public manipulate(a: string[]): string[] {
+    return a.slice(1);
+}
+```
+
 
 ## organization of fields and methods in classes
 

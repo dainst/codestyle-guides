@@ -1,5 +1,5 @@
 // TODO Compiler-Settings (no implicit any usw.)
-// TODO Lamba-Notation (this-Pointer und implizites Return)
+// TODO Lambda-Notation (this-Pointer und implizites Return)
 
 
 # Angular-Styleguide
@@ -191,6 +191,9 @@ Diese Reihenfolge soll u. a. erreichen, dass sich Methoden, die Felder manipulie
 
 ### Einrückung
 Einrückungen sollten grundsätzlich mit 4 Leerzeichen eingerückt werden. Auf Modularisierung (Ausgliedern in neue Angular-Components) sollte geachtet werden, sodass Templates nicht zu lang werden.
+
+### Angular
+In den Angular-Attributen (z.B. ngIf) sollten nur Aufrufe von public methods der entsprechenden Klasse stehen.
 
 ### CSS-Einbindung
 Auf Style-Attribute sollte vollständig verzichtet werden. Stattdessen werden Klassen oder IDs verwendet.

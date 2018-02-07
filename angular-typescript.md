@@ -140,12 +140,15 @@ public manipulate(a: string[]): string[] {
     return a;
 }
 ```
+Der Caller von manipulate weiß beim Aufruf der Methode nicht, dass sich der Parameter a ändert. Durch die Angabe des Rückgabewertes wird zusätzlich fälschlicherweise suggeriert, dass das bestehende Array nicht geändert, sondern ein neues zurückgegeben wird.
+
 In Methoden ohne Rückgabewert, bei denen die Manipulation eines Parameters aus dem Namen ausreichend hervorgeht, können Parameter-Sideeffects unter Umständen sinnvoll sein.
 ```
 public manipulate(a: string[]) {
     a.splice(0, 1);
 }
 ```
+
 Nach Möglichkeit sollte allerdings ganz auf Parameter-Sideeffects verzichtet werden.
 ```
 public manipulate(a: string[]): string[] {

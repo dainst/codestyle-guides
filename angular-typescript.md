@@ -4,8 +4,8 @@
 
 # Angular-Styleguide
 
-* für Angular / Typescript Projekte
-* idai-field-client
+Für Angular-/Typescript-Projekte, zurzeit:
+* idai-field
 * idai-components-2
 
 ## Zeilenlänge
@@ -171,7 +171,7 @@ Diese Regel wurde eingeführt, weil der Typescript-Compiler Zugriffe auf Methode
 
 Bei private methods sollte **static** verwendet werden, wann immer es möglich ist. Dadurch ist bei diesen Methoden auf den ersten Blick ersichtlich, dass keine Felder des Objekts manipuliert werden. Feldzugriffe sollten generell möglichst nah an den Einstiegspunkten in die Klasse (public methods) stattfinden.
 
-Public static methods werden selten verwendet, da sie aus Templates nicht aufgerufen werden können. Bei Utility-Klassen sollten statt public static methods direkt Funktionen exportiert werden.
+Public static methods werden selten verwendet, da sie aus Templates nicht aufgerufen werden können. Utility-Funktionen werden nicht als public static methods innerhalb von Klassen definiert, sondern einzeln exportiert, sodass sie zur Verwendung unabhängig voneinander importiert werden können.
 
 
 ## Reihenfolge von Feldern und Methoden in Klassen

@@ -1,12 +1,17 @@
-// TODO Compiler-Settings (no implicit any usw.)
 // TODO Lambda-Notation (this-Pointer und implizites Return)
-
 
 # Angular-Styleguide
 
 Für Angular-/Typescript-Projekte, zurzeit:
 * idai-field
 * idai-components-2
+
+## Compiler-Einstellungen
+
+Folgende Festlegungen wurde getroffen
+
+* "noImplicitAny": true
+* "strictNullChecks": true
 
 ## Zeilenlänge
 Die Zeilenlänge sollte 110 Zeichen nicht überschreiten.

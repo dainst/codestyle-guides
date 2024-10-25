@@ -1,24 +1,14 @@
-// TODO Lambda-Notation (this-Pointer und implizites Return)
+# Angular/Typescript-Styleguide
 
-# Angular-Styleguide
-
-Für Angular-/Typescript-Projekte, zurzeit:
-* idai-field
-* idai-components-2
-
-## Compiler-Einstellungen
-
-Folgende Festlegungen wurde getroffen
-
-* "noImplicitAny": true
-* "strictNullChecks": true
+Für Angular-/Typescript-Projekte, zurzeit ausschließlich idai-field.
 
 ## Zeilenlänge
-Die Zeilenlänge sollte 110 Zeichen nicht überschreiten.
+
+Die Zeilenlänge sollte 120 Zeichen nicht überschreiten.
 
 ## Einrückung
 
-Einrückung mit 4 Leerzeichen, sofern nicht anders (z.B. für eine Sprache oder ein Projekt) definiert
+Einrückung mit 4 Leerzeichen, sofern nicht anders (z.B. für eine Sprache oder ein Projekt) definiert.
 
 ## Leerzeichen
 
@@ -43,13 +33,13 @@ if (foo == bar) {
 Ein Leerzeichen nach Komma zur Trennung von Parametern:
 
 ```typescript
-private doStuff(foo, bar, baz) { }
+private doStuff(foo, bar, baz) {}
 ```
 
 Mit Typisierung:
 
 ```typescript
-private doStuff(foo: any, bar: any, baz: any): any { }
+private doStuff(foo: any, bar: any, baz: any): any {}
 ```
 
 ## Leerzeilen
@@ -66,7 +56,7 @@ public a() {
 
 ## Klammerung
 
-Öffnende geschweifte Klammern in der gleichen Zeile wie die zugehörige Anweisung ("Java-Style":https://de.wikipedia.org/wiki/Einr%C3%BCckungsstil#Variation:_Java_.2F_Sun)
+Öffnende geschweifte Klammern in der gleichen Zeile wie die zugehörige Anweisung (["Java-Style"](https://de.wikipedia.org/wiki/Einr%C3%BCckungsstil#Variation:_Java_.2F_Sun)).
 
 ## Typangabe bei Variablendeklaration
 
@@ -86,46 +76,42 @@ Wann immer möglich, einfache '' verwenden. Z.B.:
 const name = 'dai';
 ```
 
-Doppelte "" dann verwenden, wenn man etwas innerhalb des Strings replacen möchte.
+## Benennung und Kommentare
 
-Das Verhalten von IntelliJ (https://stackoverflow.com/questions/39779272/webstorm-phpstorm-double-quotes-in-typescript-auto-import) sollte umgestellt werden, das bei *organize imports* auch einfache Anführungszeichen generiert werden.
+Bei der Benennung von Variablen, Konstanten, Funktionen usw. sollte auf Abkürzungen verzichtet werden. Es sollten möglichst sprechende Namen gewählt werden, sodass zusätzliche Kommentare nicht nötig sind. 
 
-```typescript
-import {MapState} from './map/map-state';
-```
+Kommentare können in folgenden Fällen gesetzt werden:
 
-## Temporäre Variablen
-
-... erst kurz vor Verwendung deklarieren. Am besten ganz vermeiden.
+* Über eine Klasse oder ein Modul zur Erläuterung deren/dessen Aufgaben
+* An allen Stellen, an denen die Funktionsweise von Codebestandteilen aus der Benennung der Variablen, Funktionen usw. nicht eindeutig hervorgeht (z.B. Code zur Behebung komplexerer Bugs)
 
 
 ## Promises
 
 Bevorzugt async und await benutzen, um nach Möglichkeit auf Promise-Chaining (.then(() => {}).then...) verzichten zu können.
 
-## Objekte - Felder vs. Hashes.
+## Objekte - Felder vs. Hashes
 
-Dank Typescript können wir ja Klassen definieren. Wenn wir z.B. in der Klasse Document das Feld resource definiert haben,
+Wenn wir z.B. im Interface Document das Feld resource definiert haben,
 
 ```typescript
-class Doc {
-  resource: any
+interface Document {
+  resource: any;
 }
 ```
 
-können wir bei Aufrufen dann schreiben
+können wir bei Aufrufen dann schreiben:
 
 ```typescript
-const doc: Doc = { resource: { } };
-doc.resource['filename'] = 'a.txt';
+const document: Document = { resource: {} };
+document.resource['filename'] = 'a.txt';
 ```
 
-D.h. wir verwenden den keybasierten Access für Felder die nicht definiert sind, und die Punktnotation für Felder die definiert sind.
+D. h. wir verwenden den keybasierten Access für Felder, die nicht definiert sind, und die Punktnotation für Felder, die definiert sind.
 
 ## Schleifen
 
-* bevorzugt *forEach* für Schleifen verwenden und mit Array-Funktionen (filter, map, includes, reduce etc.) kombinieren
-* nur wenn nötig *for .. of* verwenden
+* entweder *forEach* für Schleifen verwenden und mit Array-Funktionen (filter, map, reduce etc.) kombinieren oder *for .. of* verwenden
 * *for mit i* nur in begründeten Ausnahmefällen verwenden
 
 ## let, const, var
@@ -133,26 +119,42 @@ D.h. wir verwenden den keybasierten Access für Felder die nicht definiert sind,
 Wann immer es geht, **const** verwenden. Wenn das nicht geht, **let** verwenden.
 **var** wird grundsätzlich nicht verwendet.
 
-## Parameter-Sideeffects
+Temporäre Variablen erst kurz vor Verwendung deklarieren.
+
+## Importe
+
+Importe werden in der folgenden Reihenfolge angegeben:
+
+1. Externe Libraries (z.B. Angular)
+2. Eigene Libraries (z.B. idai-field-core)
+3. Module der aktuellen Codebasis
+
+```
+import { Component } from '@angular/core';
+import { Datastore, ProjectConfiguration } from 'idai-field-core';
+import { Messages } from '../messages/messages';
+```
+
+
+## Parameter-Side-Effects
 
 Grundsätzlich gilt:
-Eine Methode mit Rückgabewert sollte ohne Parameter-Sideeffects auskommen. Negativbeispiel:
+Eine Methode mit Rückgabewert sollte ohne Parameter-Side-Effects auskommen. Negativbeispiel:
 ```
 public manipulate(a: string[]): string[] {
     a.splice(0, 1);
     return a;
 }
 ```
-Der Caller von manipulate weiß beim Aufruf der Methode nicht, dass sich der Parameter a ändert. Durch die Angabe des Rückgabewertes wird zusätzlich fälschlicherweise suggeriert, dass das bestehende Array nicht geändert, sondern ein neues zurückgegeben wird.
+Der Caller von manipulate weiß beim Aufruf der Methode nicht, dass sich der Parameter a ändert. Durch die Angabe des Rückgabewertes wird fälschlicherweise suggeriert, dass das bestehende Array nicht geändert, sondern ein Neues zurückgegeben wird.
 
-In Methoden ohne Rückgabewert, bei denen die Manipulation eines Parameters aus dem Namen ausreichend hervorgeht, können Parameter-Sideeffects unter Umständen sinnvoll sein.
+In Methoden ohne Rückgabewert, bei denen die Manipulation eines Parameters aus dem Namen ausreichend hervorgeht, können Parameter-Side-Effects unter Umständen sinnvoll sein. Möglich wären also die beiden folgenden Varianten:
 ```
 public manipulate(a: string[]) {
     a.splice(0, 1);
 }
 ```
 
-Nach Möglichkeit sollte allerdings ganz auf Parameter-Sideeffects verzichtet werden.
 ```
 public manipulate(a: string[]): string[] {
     return a.slice(1);
@@ -165,8 +167,6 @@ public manipulate(a: string[]): string[] {
 
 *public* wird immer verwendet, wenn die Methoden von anderen Klassen aufgerufen werden. Zugriffe aus Templates gelten dabei als public access.
 
-Diese Regel wurde eingeführt, weil der Typescript-Compiler Zugriffe auf Methoden aus Templates nicht erkennt und die IDE diese Methoden fälschlicherweise als unused markiert.
-
 *public* wird nur bei von Angular-Interfaces abgeleiteten Klassen für die Interface-Methoden weggelassen, z.B. ngOnInit oder ngOnChanges.
 
 *private* bzw. *protected* für alles andere.
@@ -174,7 +174,7 @@ Diese Regel wurde eingeführt, weil der Typescript-Compiler Zugriffe auf Methode
 
 ## Static methods
 
-Bei private methods sollte **static** verwendet werden, wann immer es möglich ist. Dadurch ist bei diesen Methoden auf den ersten Blick ersichtlich, dass keine Felder des Objekts manipuliert werden. Feldzugriffe sollten generell möglichst nah an den Einstiegspunkten in die Klasse (public methods) stattfinden.
+Bei private methods sollte **static** verwendet werden, wann immer es möglich ist. Dadurch ist bei diesen Methoden auf den ersten Blick ersichtlich, dass keine Felder des Objekts manipuliert werden.
 
 Public static methods werden selten verwendet, da sie aus Templates nicht aufgerufen werden können. Utility-Funktionen werden nicht als public static methods innerhalb von Klassen definiert, sondern einzeln exportiert, sodass sie zur Verwendung unabhängig voneinander importiert werden können.
 
@@ -189,22 +189,17 @@ Public static methods werden selten verwendet, da sie aus Templates nicht aufger
 5. Private methods
 6. Private static methods
 
-Diese Reihenfolge soll u. a. erreichen, dass sich Methoden, die Felder manipulieren, möglichst weit oben in der Datei befinden.
-
 
 ## HTML/CSS
 
 ### Einrückung
-Einrückungen sollten grundsätzlich mit 4 Leerzeichen eingerückt werden. Auf Modularisierung (Ausgliedern in neue Angular-Components) sollte geachtet werden, sodass Templates nicht zu lang werden.
-
-### Angular
-In den Angular-Attributen (z.B. ngIf) sollten nur Aufrufe von public methods der entsprechenden Klasse stehen.
+Einrückungen sollten grundsätzlich mit 4 Leerzeichen vorgenommen werden. Auf Modularisierung (Ausgliedern in neue Angular-Components) sollte geachtet werden, sodass Templates nicht zu lang werden.
 
 ### CSS-Einbindung
 Auf Style-Attribute sollte vollständig verzichtet werden. Stattdessen werden Klassen oder IDs verwendet.
 
 ### Hierarchie in SCSS-Files
-Von der Möglichkeit der Hierarchiedarstellung in SCSS-Files sollte Gebrauch gemacht werden, um die tatsächliche Gliederung im DOM bzw. in der Componentstruktur annähernd widerzuspielen.
+Von der Möglichkeit der Hierarchiedarstellung in SCSS-Files sollte Gebrauch gemacht werden, um die tatsächliche Gliederung im DOM bzw. in der Component-Struktur annähernd widerzuspiegeln.
 ```
 #resources {
   position: fixed;

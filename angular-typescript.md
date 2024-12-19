@@ -68,6 +68,18 @@ private foo: Foo;
 
 Optionale Semikola sollten immer angegeben werden.
 
+## Arrays
+
+Für Arrays aus TypeScript-Basistypen (string, number, boolean, any) wird die Schreibweise mit eckigen Klammern verwendet:
+```
+const values: string[] = ['A', 'B', 'C'];
+```
+
+Für alle anderen Arrays wird die Schreibweise mit spitzen Klammern verwendet:
+```
+const resources: Array<Resource> = [{ ... }, { ... }];
+```
+
 ## Anführungszeichen
 
 Wann immer möglich, einfache '' verwenden. Z.B.:

@@ -58,6 +58,20 @@ public a() {
 
 Öffnende geschweifte Klammern in der gleichen Zeile wie die zugehörige Anweisung (["Java-Style"](https://de.wikipedia.org/wiki/Einr%C3%BCckungsstil#Variation:_Java_.2F_Sun)).
 
+## If-Statements
+
+If-Statements sollten entweder nur eine einzige Zeile umfassen oder einen Block mit geschweiften Klammern bilden:
+
+```
+if (true) execute();
+```
+
+```
+if (true) {
+    execute();
+}
+```
+
 ## Typangabe bei Variablendeklaration
 
 Typangabe bei Variablendeklaration mit einem Leerzeichen getrennt:
